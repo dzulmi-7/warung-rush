@@ -30,7 +30,8 @@ export function stageShot(name, world) {
       order.arrivedAt = world.dayTime - order.patience * (1 - fraction);
       world.orders.push(order);
     });
-    // The kitchen mid-service: a wok frying rice and garlic, a pot of noodles, chili on the board.
+    // The kitchen mid-service: a wok frying rice and garlic, a pot of noodles, chili mid-chop,
+    // raw ingredients waiting on the counters, and the chef carrying a finished plate to serve.
     const stations = world.stations;
     const wokA = stations.get('2,1');
     wokA.items = [{ ingredient: 'rice', kind: 'raw' }, { ingredient: 'garlic', kind: 'chopped' }];
@@ -43,21 +44,29 @@ export function stageShot(name, world) {
     const board = stations.get('2,4');
     board.item = { ingredient: 'chili', kind: 'raw' };
     board.progress = 0.6;
-    // A plate mid-assembly on the counter, one part short of its dish.
-    const counter = stations.get('4,2');
-    counter.item = {
+    // Raw ingredients parked on the counters and a second plate mid-assembly.
+    stations.get('4,2').item = { ingredient: 'egg', kind: 'raw' };
+    stations.get('6,2').item = { ingredient: 'chicken', kind: 'raw' };
+    stations.get('2,2').item = {
       plate: true,
       parts: [
-        { ingredient: 'chicken', kind: 'cooked' },
-        { ingredient: 'chili', kind: 'chopped' },
+        { ingredient: 'rice', kind: 'cooked' },
+        { ingredient: 'egg', kind: 'raw' },
       ],
     };
-    // The chef stands by the wok holding the missing garlic, ready to finish the dish.
+    // The chef stands at the serve window holding the complete dish, ready to ring the bell.
     world.chef.x = 1.5;
     world.chef.y = 1.5;
-    world.chef.facingX = 1;
-    world.chef.facingY = 0;
-    world.chef.held = { ingredient: 'garlic', kind: 'chopped' };
+    world.chef.facingX = 0;
+    world.chef.facingY = -1;
+    world.chef.held = {
+      plate: true,
+      parts: [
+        { ingredient: 'rice', kind: 'cooked' },
+        { ingredient: 'garlic', kind: 'chopped' },
+        { ingredient: 'egg', kind: 'raw' },
+      ],
+    };
     return { screen: 'play' };
   }
   if (name === 'end') {
