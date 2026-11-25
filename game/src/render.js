@@ -131,7 +131,7 @@ export function drawTitle(g, best) {
   g.textAlign = 'center';
   g.fillStyle = PALETTE.accent2;
   g.font = 'bold 88px sans-serif';
-  g.fillText('WARUNG RUSH', VIEW_WIDTH / 2, 220);
+  g.fillText('DAPUR KILAT', VIEW_WIDTH / 2, 220);
   g.fillStyle = PALETTE.paper;
   g.font = '24px sans-serif';
   g.fillText('the street-food kitchen that never slows down', VIEW_WIDTH / 2, 262);
@@ -168,7 +168,7 @@ export function drawPaused(g) {
 export function drawDayEnd(g, world, best) {
   centrePanel(
     g,
-    world.victory ? 'Warung Legend!' : `Day ${world.day} closed`,
+    world.victory ? 'Dapur Legend!' : `Day ${world.day} closed`,
     [
       `served ${world.served} orders — ${world.misses} customers lost`,
       `day score $${world.dayScore}  •  total $${world.score}`,

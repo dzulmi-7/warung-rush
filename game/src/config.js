@@ -80,4 +80,4 @@ export const SCREEN_DAY_END = 'day_end';
 export const SCREEN_GAME_OVER = 'game_over';
 
 /** Storage key of the best day score. */
-export const BEST_KEY = 'warung-rush-best';
+export const BEST_KEY = 'dapur-kilat-best';

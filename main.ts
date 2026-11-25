@@ -1,4 +1,4 @@
-// Warung Rush's hand-in program (Node 22, standard library only): copies the game and the
+// Dapur Kilat's hand-in program (Node 22, standard library only): copies the game and the
 // screenshots beside this file into /output and writes /output/dossier.json with the vendored
 // make.fun library. Outside the grader, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
